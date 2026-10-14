@@ -249,33 +249,31 @@ ORDER BY z.borough, trips DESC;
 
 ## 💡 Key Insights
 
-> ✏️ **Replace the `XX` values below with the real numbers from your `results/` CSVs before publishing.**
-
 | Finding                         | Result                                                                                         |
 | ------------------------------- | ---------------------------------------------------------------------------------------------- |
-| 🧹 **Data quality**             | **XX million** trips loaded, **XX** kept after cleaning (**XX%** removed). All 7 quality checks passed. |
-| 💰 **Top revenue zone**         | **XX** was the highest-earning pickup zone with **XX%** of total revenue.                      |
-| ⏰ **Peak demand**              | Weekday demand peaks around **XX:00–XX:00**, while weekends peak at **XX:00**.                 |
-| 📉 **Revenue anomalies**        | Revenue fell **XX%** on **DATE** compared with the previous week (possible cause: weather / holiday). |
-| 🏙️ **Borough comparison**       | **Manhattan** generated **XX%** of revenue, far ahead of the other boroughs.                   |
+| 🧹 **Data quality**             | **9,554,778 million** trips loaded, **9,205,534** kept after cleaning (**3.66%** removed). All 7 quality checks passed. |
+| 💰 **Top revenue zone**         | **JFK Airport** was the highest-earning pickup zone with **13.21%** of total revenue.                      |
+| ⏰ **Peak demand**              | Weekday demand peaks around **17:00-19:00**, while weekend demand stays high later into the night, past midnight.                 |
+| 📉 **Revenue anomalies**        | Revenue fell **36.5%** on **2024-FEB-13** compared with the previous week (possible cause: weather / holiday). |
+| 🏙️ **Borough comparison**       | **Manhattan** generated **75.6%** of revenue, far ahead of the other boroughs. Queens ranks second thanks to the two airports (**22.6**).                   |
 
 ### 🔥 Demand by weekday and hour
 
 ![Demand heatmap](results/demand_heatmap.png)
 
-> ✏️ *One sentence on what the heatmap shows, e.g. "Weekday demand peaks during the evening rush, while Friday and Saturday nights stay busy late."*
+> ✏️ *Demand peaks at 6 PM on weekdays, strongest on Wednesday and Thursday, while weekends shift later, with Saturday and Sunday staying busy past midnight.*
 
 ### 📅 Daily revenue and 7-day moving average
 
 ![Daily revenue](results/daily_revenue.png)
 
-> ✏️ *One sentence on the trend and the main dips.*
+> ✏️ *Revenue follows a clear weekly cycle, and the 7-day average climbs from about $2.4M in early January to over $3.1M by mid-March, with one sharp drop in mid-February.*
 
 ### 🏆 Top 10 pickup zones by revenue
 
 ![Top zones](results/top_zones.png)
 
-> ✏️ *One sentence on which zones dominate and why (airports, Midtown, etc.).*
+> ✏️ *JFK Airport is by far the top revenue zone at roughly $33M, nearly double LaGuardia, because airport trips are long and high-fare, while the rest of the top 10 is Midtown and the Upper East Side.*
 
 ## ⚡ Performance Comparison
 
@@ -285,9 +283,9 @@ ORDER BY z.borough, trips DESC;
 
 | Source       | Size (MB) | Query time (s) |
 | ------------ | --------- | -------------- |
-| DuckDB table | -         | XX             |
-| Parquet file | XX        | XX             |
-| CSV file     | XX        | XX             |
+| DuckDB table | -         | 0.075          |
+| Parquet file | 156       | 0.104          |
+| CSV file     | 620       | 2.666          |
 
 **Why the difference?** Parquet is **columnar and compressed**: the query only reads the columns it needs (`pickup_hour`, `total_amount`). CSV is plain text, so the database must read and parse every column of every row. Parquet is therefore smaller and much faster to query. The native DuckDB table is optimised for exactly this kind of analytical workload.
 
@@ -346,7 +344,7 @@ nyc-taxi-duckdb/
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/YOUR_USERNAME/nyc-taxi-duckdb.git
+git clone https://github.com/IuliaSapungiu/nyc-taxi-duckdb.git
 cd nyc-taxi-duckdb
 
 # 2. Create and activate a virtual environment
