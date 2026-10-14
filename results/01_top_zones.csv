@@ -1,0 +1,11 @@
+zone,borough,trips,revenue,pct_of_total,revenue_rank
+JFK Airport,Queens,408270,33451367.0,13.21,1
+LaGuardia Airport,Queens,278578,18683880.0,7.38,2
+Midtown Center,Manhattan,441805,10760010.0,4.25,3
+Times Sq/Theatre District,Manhattan,319523,8736535.0,3.45,4
+Upper East Side South,Manhattan,429792,8666048.0,3.42,5
+Upper East Side North,Manhattan,407034,8408185.0,3.32,6
+Midtown East,Manhattan,327809,7785809.0,3.08,7
+Penn Station/Madison Sq West,Manhattan,311466,7665008.0,3.03,8
+Lincoln Square East,Manhattan,307804,6637793.0,2.62,9
+Midtown North,Manhattan,268724,6450951.0,2.55,10
