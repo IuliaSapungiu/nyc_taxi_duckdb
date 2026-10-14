@@ -1,9 +1,11 @@
 import pathlib
 import pandas as pd
 import matplotlib.pyplot as plt
+from matplotlib.ticker import FuncFormatter
 
 pathlib.Path("results").mkdir(exist_ok=True)
 
+millions = FuncFormatter(lambda x, _: f"${x/1e6:.1f}M")
 
 def demand_heatmap():
     df = pd.read_csv("results/06_demand_heatmap.csv")
@@ -30,8 +32,9 @@ def daily_revenue():
     fig, ax = plt.subplots(figsize=(11, 4))
     ax.plot(df["date"], df["revenue"], alpha=0.4, label="Daily revenue")
     ax.plot(df["date"], df["moving_avg_7d"], linewidth=2.5, label="7-day moving average")
+    ax.yaxis.set_major_formatter(millions) 
     ax.set_title("Daily taxi revenue (Jan-Mar 2024)")
-    ax.set_ylabel("Revenue ($)")
+    ax.set_ylabel("Revenue")
     ax.legend()
     plt.tight_layout()
     plt.savefig("results/daily_revenue.png", dpi=150)
@@ -43,8 +46,9 @@ def top_zones():
 
     fig, ax = plt.subplots(figsize=(9, 5))
     ax.barh(top["zone"], top["revenue"])
+    ax.xaxis.set_major_formatter(millions)
     ax.set_title("Top 10 pickup zones by revenue (Jan-Mar 2024)")
-    ax.set_xlabel("Revenue ($)")
+    ax.set_xlabel("Revenue")
     plt.tight_layout()
     plt.savefig("results/top_zones.png", dpi=150)
     plt.close()
