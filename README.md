@@ -279,8 +279,6 @@ ORDER BY z.borough, trips DESC;
 
 `performance.py` tests whether **storage format** affects query speed. The same fact table was exported to **Parquet** and **CSV**, and the same aggregation query was run on all three sources (best of 3 runs):
 
-> ✏️ **Paste the table printed by `python performance.py` here.**
-
 | Source       | Size (MB) | Query time (s) |
 | ------------ | --------- | -------------- |
 | DuckDB table | -         | 0.075          |
@@ -313,7 +311,7 @@ ORDER BY z.borough, trips DESC;
 nyc-taxi-duckdb/
 │
 ├── 🐍 build.py              # Builds the warehouse + runs quality checks
-├── 🐍 analyze.py            # Runs analysis queries, exports CSVs
+├── 🐍 analyse.py            # Runs analysis queries, exports CSVs
 ├── 🐍 plot_charts.py        # Creates the 3 charts
 ├── 🐍 performance.py        # CSV vs Parquet vs DuckDB benchmark
 │
