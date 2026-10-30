@@ -357,7 +357,7 @@ pip install -r requirements.txt
 python build.py
 
 # 5. Run the analysis queries (prints tables and saves CSVs to results/)
-python analyze.py
+python analyse.py
 
 # 6. Create the charts
 python plot_charts.py
